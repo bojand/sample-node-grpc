@@ -1,0 +1,18 @@
+name: sample-node-grpc-edge
+services:
+- name: edge
+  environment_slug: node-js
+  github:
+    repo: bojand/sample-node-grpc
+    branch: edge
+  envs:
+  - key: TARGET_COMPONENT
+    value: "grpcsvc:5500"
+    scope: RUN_TIME
+- name: grpcsvc
+  environment_slug: node-js
+  github:
+    repo: bojand/sample-node-grpc
+    branch: edge
+  internal_ports:
+  - 5500

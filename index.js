@@ -1,31 +1,31 @@
-const path = require('path')
-const grpc = require('@grpc/grpc-js')
-const protoLoader = require('@grpc/proto-loader')
+const fastify = require('fastify')({ logger: true })
+const client = require('./client')
 
-const PROTO_PATH = path.join(__dirname, '/helloworld.proto')
-const PORT = process.env.PORT
+const port = process.env.PORT || 3000
 
-const packageDefinition = protoLoader.loadSync(PROTO_PATH)
-const helloProto = grpc.loadPackageDefinition(packageDefinition).helloworld
-
-function log (msg) {
-  const now = (new Date()).toUTCString()
-  console.log(`[${now}] ${msg}`)
+const opts = {
+  schema: {
+    body: {
+      type: 'object',
+      properties: {
+        name: { type: 'string' }
+      }
+    }
+  }
 }
 
-function sayHello (call, fn) {
-  const name = call.request.name
-  log(`sayHello call: ${name}`)
-  fn(null, { message: 'Hello ' + name })
+fastify.post('/', opts, async (request, reply) => {
+  return client.sayHelloAsync(request.body)
+})
+
+const start = async () => {
+  try {
+    await fastify.listen(port, '0.0.0.0')
+    fastify.log.info(`server listening on ${fastify.server.address().port}`)
+  } catch (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
 }
 
-function main () {
-  const server = new grpc.Server()
-  server.addService(helloProto.Greeter.service, { sayHello })
-  server.bindAsync(`0.0.0.0:${PORT}`, grpc.ServerCredentials.createInsecure(), () => {
-    log(`Node.js gRPC server start on 0.0.0.0:${PORT}`)
-    server.start()
-  })
-}
-
-main()
+start()
