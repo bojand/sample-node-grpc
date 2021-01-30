@@ -1,0 +1,26 @@
+{
+  "name": "sample-node-grpc",
+  "version": "1.0.0",
+  "description": "Sample Node.js gRPC DigitalOcean App Platform application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bojand/sample-node-grpc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bojand/sample-node-grpc/issues"
+  },
+  "homepage": "https://github.com/bojand/sample-node-grpc#readme",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.2.5",
+    "@grpc/proto-loader": "^0.5.6"
+  },
+  "devDependencies": {
+    "standard": "^16.0.3"
+  }
+}
