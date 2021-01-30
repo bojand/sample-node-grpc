@@ -1,7 +1,14 @@
+const path = require('path')
 const fastify = require('fastify')({ logger: true })
+const fastifyStatic = require('fastify-static')
+
 const client = require('./client')
 
 const port = process.env.PORT || 3000
+
+fastify.register(fastifyStatic, {
+  root: path.join(__dirname, 'public')
+})
 
 const opts = {
   schema: {
