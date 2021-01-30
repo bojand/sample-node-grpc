@@ -5,7 +5,7 @@ services:
   run_command: "npm run start-edge"
   github:
     repo: bojand/sample-node-grpc
-    branch: edge
+    branch: main
   envs:
   - key: TARGET_COMPONENT
     value: "grpcsvc:5500"
@@ -15,6 +15,6 @@ services:
   run_command: "npm run start-svc"
   github:
     repo: bojand/sample-node-grpc
-    branch: edge
+    branch: main
   internal_ports:
   - 5500
