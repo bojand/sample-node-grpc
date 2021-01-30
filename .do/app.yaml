@@ -2,7 +2,7 @@ name: sample-node-grpc-edge
 services:
 - name: edge
   environment_slug: node-js
-  run_command: "node index.js"
+  run_command: "npm run start-edge"
   github:
     repo: bojand/sample-node-grpc
     branch: edge
@@ -12,7 +12,7 @@ services:
     scope: RUN_TIME
 - name: grpcsvc
   environment_slug: node-js
-  run_command: "node grpc_server.js"
+  run_command: "npm run start-svc"
   github:
     repo: bojand/sample-node-grpc
     branch: edge
