@@ -1,10 +1,8 @@
-import path from 'path'
-import fastifyStatic from 'fastify-static'
-import fastifyLib from 'fastify'
+const path = require('path')
+const fastify = require('fastify')({ logger: true })
+const fastifyStatic = require('@fastify/static')
 
-import client from './client'
-
-const fastify = fastifyLib({ logger: true })
+const client = require('./client')
 
 const port = process.env.PORT || 3000
 

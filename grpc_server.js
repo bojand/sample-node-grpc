@@ -1,8 +1,8 @@
-import path from 'path'
-import grpc from '@grpc/grpc-js'
-import protoLoader from '@grpc/proto-loader'
+const path = require('path')
+const grpc = require('@grpc/grpc-js')
+const protoLoader = require('@grpc/proto-loader')
 
-import { log, sayHello } from './handler'
+const { log, sayHello } = require('./handler')
 
 const PROTO_PATH = path.join(__dirname, '/helloworld.proto')
 const PORT = process.env.PORT || 3000

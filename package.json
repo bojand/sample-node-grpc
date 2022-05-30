@@ -22,7 +22,7 @@
     "@grpc/grpc-js": "^1.2.5",
     "@grpc/proto-loader": "^0.6.0",
     "fastify": "^3.11.0",
-    "fastify-static": "^4.7.0"
+    "@fastify/static": "^5.0.0"
   },
   "devDependencies": {
     "standard": "^17.0.0"
